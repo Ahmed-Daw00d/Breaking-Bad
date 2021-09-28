@@ -23,7 +23,7 @@ class CharacterItem extends StatelessWidget {
           color: MyColors.myGrey,
           child: character.image.isNotEmpty
               ? FadeInImage.assetNetwork(
-                  placeholder: 'assets/images/loading1.gif',
+                  placeholder: 'assets/images/22.gif',
                   image: character.image,
                   fit: BoxFit.cover,
                 )
