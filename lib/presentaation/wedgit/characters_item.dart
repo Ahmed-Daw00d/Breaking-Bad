@@ -26,7 +26,7 @@ class CharacterItem extends StatelessWidget {
                   placeholderCacheHeight: 2,
                   placeholderCacheWidth: 2,
                   placeholderScale: 2,
-                  placeholder: 'assets//images/loading.gif',
+                  placeholder: 'assets//images/loading1.gif',
                   image: character.image,
                   fit: BoxFit.cover,
                 )
