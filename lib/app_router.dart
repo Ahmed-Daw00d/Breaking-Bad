@@ -6,6 +6,7 @@ import 'package:train_bloc/Data/wep_api/api.dart';
 import 'package:train_bloc/bussines_logic/cubit/characters_cubit.dart';
 import 'package:train_bloc/presentaation/screen/characters_details.dart';
 import 'package:train_bloc/presentaation/screen/characters_screen.dart';
+import 'Data/model/characters.dart';
 import 'constants/string.dart';
 
 class AppRouter {
@@ -26,7 +27,9 @@ class AppRouter {
           ),
         );
       case CharactersDetailsRout:
-        return MaterialPageRoute(builder: (_) => CharacterDetailsScreen());
+        final charcter = settings.arguments as Character;
+        return MaterialPageRoute(
+            builder: (_) => CharacterDetailsScreen(character: charcter));
     }
   }
 }
