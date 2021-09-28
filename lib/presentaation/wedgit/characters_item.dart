@@ -18,13 +18,11 @@ class CharacterItem extends StatelessWidget {
       ),
       child: GridTile(
         child: Container(
-          width: double.infinity,
-          height: double.infinity,
           color: MyColors.myGrey,
           child: character.image.isNotEmpty
               ? FadeInImage.assetNetwork(
-                  height: double.infinity,
                   width: double.infinity,
+                  height: double.infinity,
                   placeholder: 'assets/images/loading1.gif',
                   image: character.image,
                   fit: BoxFit.cover,
