@@ -87,10 +87,14 @@ class CharacterDetailsScreen extends StatelessWidget {
                       characterInfo('Appeared In : ', character.category),
                       buildDivider(3),
                       character.appearance.isNotEmpty
-                          ? characterInfo(
-                              'Seasons : ', character.appearance.join(' / '))
+                          ? Column(
+                              children: [
+                                characterInfo('Seasons : ',
+                                    character.appearance.join(' / ')),
+                                buildDivider(3),
+                              ],
+                            )
                           : Container(),
-                      buildDivider(3),
                       characterInfo('Status : ', character.status),
                       buildDivider(3),
                       character.betterCallSaulAppearance.isNotEmpty
