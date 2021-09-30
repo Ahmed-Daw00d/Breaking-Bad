@@ -1,5 +1,5 @@
-import 'package:train_bloc/bussines_logic/cubit/characters_cubit.dart';
-
-final baseurl = 'https://www.breakingbadapi.com/api/';
+const baseurl = 'https://www.breakingbadapi.com/api/';
+// ignore: constant_identifier_names
 const CharacterScreen = '/';
+// ignore: constant_identifier_names
 const CharactersDetailsRout = '/characters_Detail';

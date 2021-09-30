@@ -22,12 +22,12 @@ class _CharactersScreenState extends State<CharactersScreen> {
     return TextField(
       controller: _searchTextController,
       cursorColor: MyColors.myGrey,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: "search a character...",
         border: InputBorder.none,
         hintStyle: TextStyle(color: MyColors.myGrey, fontSize: 16),
       ),
-      style: TextStyle(color: MyColors.myGrey, fontSize: 16),
+      style: const TextStyle(color: MyColors.myGrey, fontSize: 16),
       onChanged: (searcedCharacter) {
         addSearchedForItemsToSearchedList(searcedCharacter);
       },
@@ -50,13 +50,13 @@ class _CharactersScreenState extends State<CharactersScreen> {
               _clearSearch();
               Navigator.pop(context);
             },
-            icon: Icon(Icons.clear, color: MyColors.myGrey))
+            icon: const Icon(Icons.clear, color: MyColors.myGrey))
       ];
     } else {
       return [
         IconButton(
             onPressed: _startSearch,
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
               color: MyColors.myGrey,
             ))
@@ -86,19 +86,20 @@ class _CharactersScreenState extends State<CharactersScreen> {
   }
 
   Widget _buildAppBarTitle() {
-    return Text(
+    return const Text(
       "Characters",
       style: TextStyle(color: MyColors.myGrey, fontSize: 25),
     );
   }
 
+  @override
   void initState() {
     super.initState();
     BlocProvider.of<CharactersCubit>(context).getAllCharacters();
   }
 
   Widget showLoadingIndicator() {
-    return Center(
+    return const Center(
       child: CircularProgressIndicator(
         color: MyColors.myYellow,
       ),
@@ -120,7 +121,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
 
   Widget buildCharactersList() {
     return GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 2 / 3,
             crossAxisSpacing: 1,
@@ -157,7 +158,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
     return Scaffold(
       appBar: AppBar(
           leading: _isSearching
-              ? BackButton(
+              ? const BackButton(
                   color: MyColors.myGrey,
                 )
               : Container(),

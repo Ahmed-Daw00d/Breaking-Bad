@@ -10,14 +10,16 @@ class CharactersApi {
       connectTimeout: 20 * 1000,
       receiveTimeout: 20 * 1000,
     );
-    dio = new Dio(options);
+    dio = Dio(options);
   }
   Future<List<dynamic>> getAllCharacters() async {
     try {
       Response response = await dio.get('characters');
+      // ignore: avoid_print
       print(response.data.toString());
       return response.data;
     } catch (e) {
+      // ignore: avoid_print
       print(e.toString());
       return [];
     }

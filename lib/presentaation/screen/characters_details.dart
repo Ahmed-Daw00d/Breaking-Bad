@@ -17,7 +17,7 @@ class CharacterDetailsScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           character.nickname,
-          style: TextStyle(color: MyColors.myWight),
+          style: const TextStyle(color: MyColors.myWight),
           textAlign: TextAlign.start,
         ),
         background: Hero(
@@ -39,14 +39,14 @@ class CharacterDetailsScreen extends StatelessWidget {
         children: [
           TextSpan(
             text: title,
-            style: TextStyle(
+            style: const TextStyle(
                 color: MyColors.myWight,
                 fontSize: 18,
                 fontWeight: FontWeight.bold),
           ),
           TextSpan(
             text: value,
-            style: TextStyle(
+            style: const TextStyle(
                 color: MyColors.myWight,
                 fontSize: 16,
                 fontWeight: FontWeight.bold),
@@ -76,8 +76,8 @@ class CharacterDetailsScreen extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 Container(
-                  margin: EdgeInsets.fromLTRB(14, 14, 14, 0),
-                  padding: EdgeInsets.all(8),
+                  margin: const EdgeInsets.fromLTRB(14, 14, 14, 0),
+                  padding: const EdgeInsets.all(8),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,28 +92,26 @@ class CharacterDetailsScreen extends StatelessWidget {
                       characterInfo('Status : ', character.status),
                       buildDivider(3),
                       character.betterCallSaulAppearance.isNotEmpty
-                          ? Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  characterInfo(
-                                      'Better call Saul Season : ',
-                                      character.betterCallSaulAppearance
-                                          .join(' / ')),
-                                  buildDivider(3),
-                                ],
-                              ),
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                characterInfo(
+                                    'Better call Saul Season : ',
+                                    character.betterCallSaulAppearance
+                                        .join(' / ')),
+                                buildDivider(3),
+                              ],
                             )
                           : Container(),
                       characterInfo('Actor/Actress : ', character.actorname),
                       buildDivider(3),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       )
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 500,
                 )
               ],
