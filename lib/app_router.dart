@@ -11,12 +11,13 @@ import 'constants/string.dart';
 
 class AppRouter {
   late CharactersRepostory charactersRepostory;
-
   late CharactersCubit charactersCubit;
+
   AppRouter() {
     charactersRepostory = CharactersRepostory(CharactersApi());
     charactersCubit = CharactersCubit(charactersRepostory);
   }
+
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case CharacterScreen:
@@ -29,7 +30,10 @@ class AppRouter {
       case CharactersDetailsRout:
         final charcter = settings.arguments as Character;
         return MaterialPageRoute(
-            builder: (_) => CharacterDetailsScreen(character: charcter));
+            builder: (_) => BlocProvider(
+                create: (BuildContext context) =>
+                    CharactersCubit(charactersRepostory),
+                child: CharacterDetailsScreen(character: charcter)));
     }
   }
 }

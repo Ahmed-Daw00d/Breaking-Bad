@@ -34,7 +34,7 @@ dependencies:
   imagebutton: ^0.0.6
   dio: ^4.0.0
   flutter_offline: ^2.0.0
-
+  animated_text_kit: ^4.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

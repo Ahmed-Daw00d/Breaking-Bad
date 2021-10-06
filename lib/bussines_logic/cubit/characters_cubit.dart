@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:train_bloc/Data/model/character_quote.dart';
 import 'package:train_bloc/Data/model/characters.dart';
 import 'package:train_bloc/Data/repostory/characters_repostory.dart';
 
@@ -15,5 +16,11 @@ class CharactersCubit extends Cubit<CharactersState> {
       this.characters = characters;
     });
     return characters;
+  }
+
+  void getQuotes(String charName) {
+    charactersRepostory.getQuotesCharater(charName).then((quotes) {
+      emit(Quotesloaded(quotes));
+    });
   }
 }
