@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:train_bloc/Data/model/characters.dart';
 import 'package:train_bloc/bussines_logic/cubit/characters_cubit.dart';
 import 'package:train_bloc/constants/my_colors.dart';
@@ -153,19 +154,58 @@ class _CharactersScreenState extends State<CharactersScreen> {
     });
   }
 
+  Widget buildNoInternetWidget() {
+    return Center(
+      child: Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Cant\'t connect check internet",
+              style: TextStyle(fontSize: 22, color: MyColors.myGrey),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Image.asset('assets/images/error.gif')
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          leading: _isSearching
-              ? const BackButton(
-                  color: MyColors.myGrey,
-                )
-              : Container(),
-          backgroundColor: MyColors.myYellow,
-          title: _isSearching ? _buildSearchField() : _buildAppBarTitle(),
-          actions: _buildAppBarAction()),
-      body: buildBlocWidget(),
-    );
+        appBar: AppBar(
+            leading: _isSearching
+                ? const BackButton(
+                    color: MyColors.myGrey,
+                  )
+                : Container(),
+            backgroundColor: MyColors.myYellow,
+            title: _isSearching ? _buildSearchField() : _buildAppBarTitle(),
+            actions: _buildAppBarAction()),
+        body: OfflineBuilder(
+          connectivityBuilder: (
+            BuildContext context,
+            ConnectivityResult connectivity,
+            Widget child,
+          ) {
+            final bool connected = connectivity != ConnectivityResult.none;
+            if (connected) {
+              return buildBlocWidget();
+            } else {
+              return buildNoInternetWidget();
+            }
+          },
+          child: showLoadingIndicator(),
+        ));
   }
 }
